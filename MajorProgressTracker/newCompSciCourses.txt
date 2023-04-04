@@ -1,0 +1,38 @@
+CSI 1420 - Introduction to C Programming and Unix (4)
+CSI 2300 - Object-Oriented Computing (4)
+CSI 2310 - Data Structures (4)
+CSI 2470 - Introduction to Computer Networks (4)
+CSI 2999 - Sophomore Project (2)
+CSI 3370 - Software Engineering and Practice (4)
+CSI 3430 - Theory of Computation (4)
+CSI 3450 - Database Design and Implementation (4)
+CSI 3610 - Design and Analysis of Algorithm (4)
+CSI 3640 - Computer Organization (4)
+CSI 4350 - Programming Languages (4)
+CSI 4480 - Information Security Practices (4)
+CSI 4500 - Fundamentals of Operating Systems (4)
+CSI 4650 - Parallel and Distributed Computing (4)
+CSI 4999 - Senior Capstone Project (4)
+Choose 1 of the following:
+Computational Intelligence Track:
+  CSI 4130 - Artificial Intelligence (4)
+  CSI 4810 - Information Retrieval and Knowledge Discovery (4)
+System Administration Track
+  CSI 3660 - System Administration (4)
+  CSI 4660 - Advanced System Administration (4)
+Bioinformatics Track:
+  BIO 3400 - Genetics (4)
+  CSI 4780 - Bioinformatics (4)
+Cybersecurity Track:
+  CSI 4460 - Information Security (4)
+  CSI 4700 - Software Security (4)
+  APM 4347 - Mathematics of Cryptology (4)
+Game Development Track:
+  CSI 3380 - Game Design (4)
+  CSI 4380 - Game Programming (4)
+Mobile Applications Development Track
+  CSI 3150 - Web and Mobile Systems (4)
+  CSI 4230 - Mobile Application Development (4)
+Web Development Track:
+  CSI 3150 - Web and Mobile Systems (4)
+  CSI 4160 - Integrated Computing Systems (4)
