@@ -4,12 +4,15 @@
  */
 package MajorProgressTracker;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -48,9 +51,16 @@ public class HomePage extends GridPane {
             stage.close();
         });
         
+        HBox hboxButtons = new HBox();
+        hboxButtons.setSpacing(25);
+        hboxButtons.getChildren().addAll(btnStudent, btnEmployee);
+        
         add(lblTitle, 0, 0);
-        add(btnStudent, 0, 1);
-        add(btnEmployee, 0, 2);
-        add(btnExit, 0, 3);
+        add(hboxButtons, 0, 1);
+        add(btnExit, 0, 2);
+        
+        for (Node node : getChildren()) {
+            setHalignment(node, HPos.CENTER);
+        }
     }
 }

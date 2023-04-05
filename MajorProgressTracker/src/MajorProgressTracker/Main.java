@@ -19,7 +19,7 @@ public class Main extends Application {
 
         HomePage pane = new HomePage(stage);
         
-        Scene scene = new Scene(pane, 300, 250); 
+        Scene scene = new Scene(pane); 
         stage.setTitle("Major Progress Tracker");
         stage.setScene(scene);
         stage.show();

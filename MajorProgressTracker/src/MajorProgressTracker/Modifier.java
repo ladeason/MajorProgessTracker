@@ -19,8 +19,32 @@ public class Modifier {
             case "Computer Science": 
                 data = new Database(majorName, "compSciCourses.txt");
                 break;
+            case "Bioengineering": 
+                data = new Database(majorName, "bioengCourses.txt");
+                break;
+            case "Computer Engineering": 
+                data = new Database(majorName, "compEngCourses.txt");
+                break;
+            case "Electrical Engineering": 
+                data = new Database(majorName, "elecEngCourses.txt");
+                break;
+            case "Engineering Chemistry": 
+                data = new Database(majorName, "engChemCourses.txt");
+                break;
+            case "Engineering Physics": 
+                data = new Database(majorName, "engPhyCourses.txt");
+                break;
+            case "Industrial and Systems Engineering": 
+                data = new Database(majorName, "engPhyCourses.txt");
+                break;
+            case "Information Technology": 
+                data = new Database(majorName, "infoTechCourses.txt");
+                break;
+            case "Mechanical Engineering": 
+                data = new Database(majorName, "mechEngCourses.txt");
+                break;
             default:
-                data = new Database(majorName, "compSciCourses.txt");;
+                data = new Database(majorName, "compSciCourses.txt");
                 break;
         }
     }

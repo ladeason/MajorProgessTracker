@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class EmployeePage extends GridPane {
 
-    private final ArrayList<String> majorNames = new ArrayList<>(Arrays.asList("Bioengineering", "Computer Engineering", "Computer Science", "Engineering Chemistry", "Engineering Physics", "Information Technology", "Industrial and Systems Engineering", "Electrical Engineering", "Mechanical Engineering"));
+    private final ArrayList<String> majorNames = new ArrayList<>(Arrays.asList("Bioengineering", "Computer Engineering", "Computer Science", "Electrical Engineering", "Engineering Chemistry", "Engineering Physics", "Industrial and Systems Engineering", "Information Technology", "Mechanical Engineering"));
     
     private Modifier mod;
     
@@ -36,6 +36,7 @@ public class EmployeePage extends GridPane {
     private Label lblSelectMajor;
     private Label lblCourseNum;
     private Label lblCourseName;
+    private Label lblCourseListing;
     private Label lblResult;
     private Button btnAdd;
     private Button btnRemove;
@@ -53,9 +54,10 @@ public class EmployeePage extends GridPane {
         txtCourseNum = new TextField();
         txtCourseName = new TextField();
         txtCourseListing = new TextArea();
-        lblSelectMajor = new Label("Select Major:");
+        lblSelectMajor = new Label("Select major:");
         lblCourseNum = new Label("Enter course number to be modified:");
         lblCourseName = new Label("Enter course name (optional):");
+        lblCourseListing = new Label("Course listing:");
         lblResult = new Label();
         btnAdd = new Button("Add Course");
         btnRemove = new Button("Remove Course");
@@ -78,7 +80,14 @@ public class EmployeePage extends GridPane {
             }
         });
         
-        txtCourseListing.setEditable(false);
+        ArrayList<Course> initCourses;
+
+        mod = new Modifier(boxSelectMajor.getValue());
+        initCourses = mod.getCourses();
+
+        for (Course course : initCourses) {
+            txtCourseListing.appendText(course + "\n");
+        }
         
         lblCourseNum.setPadding(new Insets(0, 0, 15, 0));
         
@@ -160,6 +169,7 @@ public class EmployeePage extends GridPane {
         add(lblSelectMajor, 0, 0);
         add(lblCourseNum, 0, 1);
         add(lblCourseName, 0, 2);
+        add(lblCourseListing, 0, 3);
         add(hboxButtons, 1, 4);
         add(btnBack, 0, 4);
     }

@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class StudentPage extends GridPane {
     
-    private final ArrayList<String> majorNames = new ArrayList<>(Arrays.asList("Bioengineering", "Computer Engineering", "Computer Science", "Engineering Chemistry", "Engineering Physics", "Information Technology", "Industrial and Systems Engineering", "Electrical Engineering", "Mechanical Engineering"));
+    private final ArrayList<String> majorNames = new ArrayList<>(Arrays.asList("Bioengineering", "Computer Engineering", "Computer Science", "Electrical Engineering", "Engineering Chemistry", "Engineering Physics", "Industrial and Systems Engineering", "Information Technology", "Mechanical Engineering"));
     
     private ScheduleGenerator sg;
     
@@ -33,7 +33,7 @@ public class StudentPage extends GridPane {
     private Label lblSelectMajor;
     private Label lblCoursesTaken;
     private Label lblCoursesRemaining;
-    private Button btnCalculate;
+    private Button btnGenerate;
     private Button btnBack;
     
     public StudentPage(Stage stage) {
@@ -49,8 +49,8 @@ public class StudentPage extends GridPane {
         txtCoursesRemaining = new TextArea();
         lblSelectMajor = new Label("Select major:");
         lblCoursesTaken = new Label("Enter courses you have taken (comma-separated):");
-        lblCoursesRemaining = new Label("Courses Remaining:");
-        btnCalculate = new Button("Calculate");
+        lblCoursesRemaining = new Label("Courses remaining:");
+        btnGenerate = new Button("Generate");
         btnBack = new Button("Back");
         
         boxSelectMajor.getItems().addAll(majorNames);
@@ -58,7 +58,7 @@ public class StudentPage extends GridPane {
         
         txtCoursesRemaining.setEditable(false);
         
-        btnCalculate.setOnAction(e -> {   
+        btnGenerate.setOnAction(e -> {   
             String major;
             String[] strEnteredCourses;
             ArrayList<Course> enteredCourses;
@@ -82,7 +82,7 @@ public class StudentPage extends GridPane {
         });
         
         btnBack.setOnAction(e -> {   
-            stage.setScene(new Scene(new HomePage(stage), 300, 250));
+            stage.setScene(new Scene(new HomePage(stage)));
         });
         
         add(boxSelectMajor, 1, 0);
@@ -91,7 +91,7 @@ public class StudentPage extends GridPane {
         add(lblSelectMajor, 0, 0);
         add(lblCoursesTaken, 0, 1);
         add(lblCoursesRemaining, 0, 2);
-        add(btnCalculate, 1, 3);
+        add(btnGenerate, 1, 3);
         add(btnBack, 0, 3);
     }
 }

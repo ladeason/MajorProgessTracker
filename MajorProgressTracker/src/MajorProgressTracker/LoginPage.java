@@ -63,12 +63,12 @@ public class LoginPage extends GridPane {
                 stage.setScene(new Scene(new EmployeePage(stage)));
             }
             else {
-                lblInvalid.setText("Invalid username or password");
+                lblInvalid.setText("Invalid login");
             }
         });
         
         btnBack.setOnAction(e -> {
-            stage.setScene(new Scene(new HomePage(stage), 300, 250));
+            stage.setScene(new Scene(new HomePage(stage)));
         });
         
         VBox vboxPassword = new VBox();
