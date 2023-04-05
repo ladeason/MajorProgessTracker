@@ -1,5 +1,5 @@
-CSI 1420
-CSI 2300
-CSI 2310
-CSI 2470
-CSI 2999
+CSI 1420 - Introduction to C Programming and Unix (4)
+CSI 2300 - Object-Oriented Computing (4)
+CSI 2310 - Data Structures (4)
+CSI 2470 - Introduction to Computer Networks (4)
+CSI 2999 - Sophomore Project (2)

@@ -60,15 +60,25 @@ public class StudentPage extends GridPane {
         
         btnCalculate.setOnAction(e -> {   
             String major;
-            String[] enteredCourses;
-            ArrayList<String> remainingCourses;
+            String[] strEnteredCourses;
+            ArrayList<Course> enteredCourses;
+            ArrayList<Course> remainingCourses;
             
             major = boxSelectMajor.getValue();
-            enteredCourses = txtCoursesTaken.getText().split(", ");
+            strEnteredCourses = txtCoursesTaken.getText().split(", ");
+            enteredCourses = new ArrayList<>();
+            
+            for(String course : strEnteredCourses) {
+                enteredCourses.add(new Course(course));
+            }
+            
             sg = new ScheduleGenerator(major);
             remainingCourses = sg.generate(enteredCourses);
             
-            txtCoursesRemaining.setText(String.join("\n", remainingCourses));
+            txtCoursesRemaining.clear(); 
+            for (Course course : remainingCourses) {
+                txtCoursesRemaining.appendText(course + "\n");
+            }
         });
         
         btnBack.setOnAction(e -> {   

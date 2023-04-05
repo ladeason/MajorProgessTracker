@@ -30,10 +30,12 @@ public class EmployeePage extends GridPane {
     private Modifier mod;
     
     private ComboBox<String> boxSelectMajor;
-    private TextField txtCourseModify;
+    private TextField txtCourseNum;
+    private TextField txtCourseName;
     private TextArea txtCourseListing;
     private Label lblSelectMajor;
-    private Label lblCourseModify;
+    private Label lblCourseNum;
+    private Label lblCourseName;
     private Label lblResult;
     private Button btnAdd;
     private Button btnRemove;
@@ -48,10 +50,12 @@ public class EmployeePage extends GridPane {
         setPadding(new Insets(25, 25, 25, 25));
         
         boxSelectMajor = new ComboBox<>();
-        txtCourseModify = new TextField();
+        txtCourseNum = new TextField();
+        txtCourseName = new TextField();
         txtCourseListing = new TextArea();
         lblSelectMajor = new Label("Select Major:");
-        lblCourseModify = new Label("Enter course to be modified:");
+        lblCourseNum = new Label("Enter course number to be modified:");
+        lblCourseName = new Label("Enter course name (optional):");
         lblResult = new Label();
         btnAdd = new Button("Add Course");
         btnRemove = new Button("Remove Course");
@@ -61,82 +65,102 @@ public class EmployeePage extends GridPane {
         boxSelectMajor.setValue(majorNames.get(0));
         boxSelectMajor.setOnAction(e -> {
             String major;
-            ArrayList<String> courses;
+            ArrayList<Course> courses;
             
             major = boxSelectMajor.getValue();
+       
             mod = new Modifier(major);
             courses = mod.getCourses();
             
-            txtCourseListing.setText(String.join("\n", courses));
+            txtCourseListing.clear(); 
+            for (Course course : courses) {
+                txtCourseListing.appendText(course + "\n");
+            }
         });
         
         txtCourseListing.setEditable(false);
         
-        lblCourseModify.setPadding(new Insets(0, 0, 15, 0));
+        lblCourseNum.setPadding(new Insets(0, 0, 15, 0));
         
         btnAdd.setOnAction(e -> {   
             String major;
-            String course;
+            String courseNum, courseName;
             boolean contains;
-            ArrayList<String> courses;
+            ArrayList<Course> courses;
             
             major = boxSelectMajor.getValue();
-            course = txtCourseModify.getText();
+            courseNum = txtCourseNum.getText();
+            courseName = txtCourseName.getText();
             
             mod = new Modifier(major);
-            contains = mod.addCourse(course);
+            if (courseName.isBlank()) {
+                 contains = mod.addCourse(new Course(courseNum));
+            }
+            else {
+                contains = mod.addCourse(new Course(courseNum, courseName));
+            }           
             courses = mod.getCourses();
             
             if (!contains) {
                 lblResult.setText("Course added to major");
-                txtCourseListing.setText(String.join("\n", courses));
+                txtCourseListing.clear(); 
+                for (Course course : courses) {
+                    txtCourseListing.appendText(course + "\n");
+                }
             }
             else {
                 lblResult.setText("Course already in major");
             } 
-            txtCourseModify.clear();
+            txtCourseNum.clear();
+            txtCourseName.clear();
         });
         
         btnRemove.setOnAction(e -> {   
             String major;
-            String course;
+            String courseNum;
             boolean found;
-            ArrayList<String> courses;
+            ArrayList<Course> courses;
                   
             major = boxSelectMajor.getValue();
-            course = txtCourseModify.getText();
+            courseNum = txtCourseNum.getText();
             
             mod = new Modifier(major);
-            found = mod.removeCourse(course);
+            found = mod.removeCourse(new Course(courseNum));
             courses = mod.getCourses();
             
             if (found) {
                 lblResult.setText("Course removed from major");
-                txtCourseListing.setText(String.join("\n", courses));
+                txtCourseListing.clear(); 
+                for (Course course : courses) {
+                    txtCourseListing.appendText(course + "\n");
+                }
             }
             else {
                 lblResult.setText("Course not found in major");
             }
-            txtCourseModify.clear();
+            txtCourseNum.clear();
+            txtCourseName.clear();
         });
         
         btnBack.setOnAction(e -> {
             stage.setScene(new Scene(new LoginPage(stage)));
         });
         
-        VBox vboxCourseModify = new VBox();
-        vboxCourseModify.getChildren().addAll(txtCourseModify, lblResult);
+        VBox vboxCourseNum = new VBox();
+        vboxCourseNum.getChildren().addAll(txtCourseNum, lblResult);
         
         HBox hboxButtons = new HBox();
         hboxButtons.setSpacing(25);
         hboxButtons.getChildren().addAll(btnAdd, btnRemove);
         
         add(boxSelectMajor, 1, 0);
-        add(vboxCourseModify, 1, 1);
-        add(txtCourseListing, 1, 2);
+        add(vboxCourseNum, 1, 1);
+        add(txtCourseName, 1, 2);
+        add(txtCourseListing, 1, 3);
         add(lblSelectMajor, 0, 0);
-        add(lblCourseModify, 0, 1);
-        add(hboxButtons, 1, 3);
-        add(btnBack, 0, 3);
+        add(lblCourseNum, 0, 1);
+        add(lblCourseName, 0, 2);
+        add(hboxButtons, 1, 4);
+        add(btnBack, 0, 4);
     }
 }

@@ -5,7 +5,6 @@
 package MajorProgressTracker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -26,11 +25,11 @@ public class ScheduleGenerator {
         }
     }
     
-    public ArrayList<String> generate(String[] coursesTaken) {
-        ArrayList<String> remainingCourses;
+    public ArrayList<Course> generate(ArrayList<Course> coursesTaken) {
+        ArrayList<Course> remainingCourses;
  
         remainingCourses = data.getMajorReq();
-        remainingCourses.removeAll(Arrays.asList(coursesTaken));
+        remainingCourses.removeAll(coursesTaken);
         return remainingCourses;
     }
 }
