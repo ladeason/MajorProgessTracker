@@ -25,15 +25,15 @@ public class Modifier {
         }
     }
     
-    public boolean addCourse(String course) {  
+    public boolean addCourse(Course course) {  
         return data.addCourse(course);
     }
     
-    public boolean removeCourse(String course) { 
+    public boolean removeCourse(Course course) { 
         return data.removeCourse(course);
     }
     
-    public ArrayList<String> getCourses() {
+    public ArrayList<Course> getCourses() {
         return data.getMajorReq();
     }
 }
