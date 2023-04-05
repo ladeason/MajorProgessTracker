@@ -39,8 +39,6 @@ public class StudentPage extends GridPane {
     public StudentPage(Stage stage) {
         super();
         
-        sg = new ScheduleGenerator();
-        
         setAlignment(Pos.CENTER);
         setHgap(25);
         setVgap(25);
@@ -61,9 +59,15 @@ public class StudentPage extends GridPane {
         txtCoursesRemaining.setEditable(false);
         
         btnCalculate.setOnAction(e -> {   
-            String major = boxSelectMajor.getValue();
-            String[] enteredCourses = txtCoursesTaken.getText().split(", ");
-            ArrayList<String> remainingCourses = sg.generate(major, enteredCourses);
+            String major;
+            String[] enteredCourses;
+            ArrayList<String> remainingCourses;
+            
+            major = boxSelectMajor.getValue();
+            enteredCourses = txtCoursesTaken.getText().split(", ");
+            sg = new ScheduleGenerator(major);
+            remainingCourses = sg.generate(enteredCourses);
+            
             txtCoursesRemaining.setText(String.join("\n", remainingCourses));
         });
         

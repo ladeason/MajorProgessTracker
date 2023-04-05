@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -41,50 +42,50 @@ public class Database {
         }
     }
     
-    public void addCourse(String course) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-            writer.append(course + "\n");
-            writer.close();
-            
+    public boolean addCourse(String course) {
+        boolean contains;
+        
+        contains = majorReq.contains(course);
+        
+        if (!contains) {
             majorReq.add(course);
+            Collections.sort(majorReq);
+            
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+
+                for (int i = 0; i < majorReq.size(); i++) {
+                    writer.write(majorReq.get(i) + "\n");
+                }
+
+                writer.close();      
+            }
+            catch (IOException e) {
+                System.out.println("File not found");
+            }
         }
-        catch (IOException e) {
-            System.out.println("File not found");
-        }
+        
+        return contains;
     }
     
-    public boolean removeCourse(String course) {
-        boolean found = false;
+    public boolean removeCourse(String course) { 
+        boolean found;
         
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("compSciCourses.txt")); 
-            
-            String line;
-            ArrayList<String> lines = new ArrayList<>();
-            
-            while ((line = reader.readLine()) != null) {
-                if (!line.equals(course)) {
-                    lines.add(line);
+        found = majorReq.remove(course);
+        
+        if(found) {
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+
+                for (int i = 0; i < majorReq.size(); i++) {
+                    writer.write(majorReq.get(i) + "\n");
                 }
-                else {
-                    found = true;
-                    majorReq.remove(course);
-                }
+
+                writer.close();
             }
-            
-            reader.close();
-            
-            BufferedWriter writer = new BufferedWriter(new FileWriter("compSciCourses.txt"));
-            
-            for (int i = 0; i < lines.size(); i++) {
-                writer.write(lines.get(i) + "\n");
+            catch (IOException e) {
+                System.out.println("File not found");
             }
-            
-            writer.close();
-        }
-        catch (IOException e) {
-            System.out.println("File not found");
         }
         
         return found;

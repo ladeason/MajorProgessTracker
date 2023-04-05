@@ -4,19 +4,17 @@
  */
 package MajorProgressTracker;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ladea
  */
 public class Modifier {
     
-    public Modifier() {
-        
-    }
+    Database data;
     
-    public void addCourse(String majorName, String course) {
-        Database data;
-        
+    public Modifier(String majorName) {
         switch (majorName) {
             case "Computer Science": 
                 data = new Database(majorName, "compSciCourses.txt");
@@ -25,22 +23,17 @@ public class Modifier {
                 data = new Database(majorName, "compSciCourses.txt");;
                 break;
         }
-        
-        data.addCourse(course);
     }
     
-    public boolean removeCourse(String majorName, String course) {
-        Database data;
-        
-        switch (majorName) {
-            case "Computer Science": 
-                data = new Database(majorName, "compSciCourses.txt");
-                break;
-            default:
-                data = new Database(majorName, "compSciCourses.txt");;
-                break;
-        }
-        
+    public boolean addCourse(String course) {  
+        return data.addCourse(course);
+    }
+    
+    public boolean removeCourse(String course) { 
         return data.removeCourse(course);
+    }
+    
+    public ArrayList<String> getCourses() {
+        return data.getMajorReq();
     }
 }

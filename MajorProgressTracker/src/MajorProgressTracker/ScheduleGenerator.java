@@ -13,14 +13,9 @@ import java.util.Arrays;
  */
 public class ScheduleGenerator {
     
-    public ScheduleGenerator() {
-        
-    }
+    Database data;
     
-    public ArrayList<String> generate(String majorName, String[] coursesTaken) {
-        Database data;
-        ArrayList<String> remainingCourses;
-        
+    public ScheduleGenerator(String majorName) {
         switch (majorName) {
             case "Computer Science": 
                 data = new Database(majorName, "compSciCourses.txt");
@@ -29,11 +24,13 @@ public class ScheduleGenerator {
                 data = new Database(majorName, "compSciCourses.txt");
                 break;
         }
-        
+    }
+    
+    public ArrayList<String> generate(String[] coursesTaken) {
+        ArrayList<String> remainingCourses;
+ 
         remainingCourses = data.getMajorReq();
-        
         remainingCourses.removeAll(Arrays.asList(coursesTaken));
-        
         return remainingCourses;
     }
 }
