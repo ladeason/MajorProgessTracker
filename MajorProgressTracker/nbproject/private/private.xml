@@ -4,9 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/EmployeePage.java</file>
+            <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/Main.java</file>
+            <file>file:/D:/MajorProgressTracker/test/DatabaseTest.java</file>
+            <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/Database.java</file>
+            <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/ScheduleGenerator.java</file>
             <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/StudentPage.java</file>
+            <file>file:/D:/MajorProgressTracker/test/ModifierTest.java</file>
             <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/HomePage.java</file>
             <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/LoginPage.java</file>
+            <file>file:/D:/MajorProgressTracker/src/MajorProgressTracker/Modifier.java</file>
         </group>
     </open-files>
 </project-private>

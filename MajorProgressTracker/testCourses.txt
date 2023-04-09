@@ -1,0 +1,3 @@
+CSI 1420 - Introduction to C Programming and Unix (4)
+CSI 2300 - Object-Oriented Computing (4)
+CSI 2310 - Data Structures (4)

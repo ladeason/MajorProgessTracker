@@ -39,6 +39,7 @@ public class EmployeePage extends GridPane {
     private Label lblCourseListing;
     private Label lblResult;
     private Button btnAdd;
+    private Button btnModify;
     private Button btnRemove;
     private Button btnBack;
     
@@ -60,6 +61,7 @@ public class EmployeePage extends GridPane {
         lblCourseListing = new Label("Course listing:");
         lblResult = new Label();
         btnAdd = new Button("Add Course");
+        btnModify = new Button("Modify Course");
         btnRemove = new Button("Remove Course");
         btnBack = new Button("Back");
         
@@ -124,6 +126,41 @@ public class EmployeePage extends GridPane {
             txtCourseName.clear();
         });
         
+        btnModify.setOnAction(e -> {
+            String major;
+            String courseNum, courseName;
+            boolean found;
+            ArrayList<Course> courses;
+            
+            major = boxSelectMajor.getValue();
+            courseNum = txtCourseNum.getText();
+            courseName = txtCourseName.getText();
+            
+            mod = new Modifier(major);
+            if (courseName.isBlank()) {
+                found = mod.modifyCourse(new Course(courseNum));
+            }
+            else {
+                found = mod.modifyCourse(new Course(courseNum, courseName));
+            }           
+            courses = mod.getCourses();
+            
+            if (found) {
+                lblResult.setText("Course modified from major");
+                txtCourseListing.clear(); 
+                for (Course course : courses) {
+                    txtCourseListing.appendText(course + "\n");
+                }
+            }
+            else {
+                lblResult.setText("Course not found in major");
+            }
+            
+            
+            txtCourseNum.clear();
+            txtCourseName.clear();
+        });
+        
         btnRemove.setOnAction(e -> {   
             String major;
             String courseNum;
@@ -160,7 +197,7 @@ public class EmployeePage extends GridPane {
         
         HBox hboxButtons = new HBox();
         hboxButtons.setSpacing(25);
-        hboxButtons.getChildren().addAll(btnAdd, btnRemove);
+        hboxButtons.getChildren().addAll(btnAdd, btnModify, btnRemove);
         
         add(boxSelectMajor, 1, 0);
         add(vboxCourseNum, 1, 1);
