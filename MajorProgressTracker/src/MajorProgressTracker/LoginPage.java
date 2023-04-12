@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -23,7 +24,7 @@ public class LoginPage extends GridPane {
     private Login login;
     
     private TextField txtUsername;
-    private TextField txtPassword;
+    private PasswordField txtPassword;
     private Label lblLogin;
     private Label lblPassword;
     private Label lblInvalid;
@@ -41,7 +42,7 @@ public class LoginPage extends GridPane {
         setPadding(new Insets(25, 25, 25, 25));
         
         txtUsername = new TextField();
-        txtPassword = new TextField();
+        txtPassword = new PasswordField();
         lblLogin = new Label("Username:");
         lblPassword = new Label("Password:");
         lblInvalid = new Label();

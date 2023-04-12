@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Modifier {
     
-    private Database data;
+    private MajorRequirements data;
     private String majorName;
     
     public Modifier(String majorName) {
@@ -20,34 +20,34 @@ public class Modifier {
         
         switch (majorName) {
             case "Computer Science": 
-                data = new Database("compSciCourses.txt");
+                data = new MajorRequirements("compSciCourses.txt");
                 break;
             case "Bioengineering": 
-                data = new Database("bioengCourses.txt");
+                data = new MajorRequirements("bioengCourses.txt");
                 break;
             case "Computer Engineering": 
-                data = new Database("compEngCourses.txt");
+                data = new MajorRequirements("compEngCourses.txt");
                 break;
             case "Electrical Engineering": 
-                data = new Database("elecEngCourses.txt");
+                data = new MajorRequirements("elecEngCourses.txt");
                 break;
             case "Engineering Chemistry": 
-                data = new Database("engChemCourses.txt");
+                data = new MajorRequirements("engChemCourses.txt");
                 break;
             case "Engineering Physics": 
-                data = new Database("engPhyCourses.txt");
+                data = new MajorRequirements("engPhyCourses.txt");
                 break;
             case "Industrial and Systems Engineering": 
-                data = new Database("engPhyCourses.txt");
+                data = new MajorRequirements("engPhyCourses.txt");
                 break;
             case "Information Technology": 
-                data = new Database("infoTechCourses.txt");
+                data = new MajorRequirements("infoTechCourses.txt");
                 break;
             case "Mechanical Engineering": 
-                data = new Database("mechEngCourses.txt");
+                data = new MajorRequirements("mechEngCourses.txt");
                 break;
             default:
-                data = new Database("testCourses.txt");
+                data = new MajorRequirements("testCourses.txt");
                 break;
         }
     }
